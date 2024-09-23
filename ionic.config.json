@@ -1,0 +1,7 @@
+{
+  "name": "leafmap",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
