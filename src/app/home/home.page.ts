@@ -15,8 +15,8 @@ export class HomePage {
   ngOnInit() {}
 
   ionViewDidEnter() {
-    // Koordinat di Indonesia (misalnya di Jakarta)
-    this.map = L.map('mapId').setView([-6.2088, 106.8456], 13);
+    // Koordinat Monas di Jakarta
+    this.map = L.map('mapId').setView([-6.1754, 106.8272], 13);
 
     // Opsi peta basemap
     const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -50,9 +50,19 @@ export class HomePage {
       iconAnchor: [12, 24],
     });
 
-    // Tambahkan marker dengan ikon kustom Font Awesome
-    const marker = L.marker([-6.2088, 106.8456], { icon: customIcon }).addTo(this.map);
-    marker.bindPopup('Ini adalah Jakarta!').openPopup();
+    // URL gambar Monas
+    const imageUrl = 'https://png.pngtree.com/png-vector/20220824/ourmid/pngtree-national-monument-of-indonesia-monas-free-vector-png-png-image_6122229.png';
+
+    // Tambahkan marker dengan ikon kustom Font Awesome di lokasi Monas
+    const marker = L.marker([-6.1754, 106.8272], { icon: customIcon }).addTo(this.map);
+
+    // Update popup untuk menyertakan gambar
+    marker.bindPopup(`
+      <div>
+        <strong>Ini adalah Monumen Nasional!</strong><br>
+        <img src="${imageUrl}" alt="Gambar Monas" style="width:100%; height:auto;">
+      </div>
+    `).openPopup();
 
     // Kontrol layer untuk basemap
     const baseMaps = {
